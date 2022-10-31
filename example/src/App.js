@@ -35,14 +35,7 @@ class App extends Component {
       title='React JSON Schema Form Builder'
       initialJsonSchema={this.state.value.jsonSchema}
       initialUiSchema={this.state.value.uiSchema}
-
-      onChange={event => {
-        this.setState({ value: event.target.value }, () => {
-          if (this.ui) {
-            this.ui.document.field.setValue(event.target.value);
-          }
-        })
-      }}
+      ui={this.ui}
     />);
   }
 }
