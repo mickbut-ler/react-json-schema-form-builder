@@ -22,7 +22,6 @@ const useStyles = createUseStyles({
 const mods = {};
 
 export default function PlaygroundContainer(props) {
-  console.log('In widget: ' + props.initalvalue);
   const [schema, setSchema] = React.useState(JSON.stringify(props.initialJsonSchema));
   const [uischema, setUischema] = React.useState(
     JSON.stringify(props.initialUiSchema),

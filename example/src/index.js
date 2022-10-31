@@ -50,7 +50,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         );
 
     } catch (error) {
-        console.log(error);
         console.error('Failed to register extension:', error.message);
         console.error('- error code:', error.code);
         root.render(
