@@ -19,14 +19,12 @@ const useStyles = createUseStyles({
 });
 
 // Can be used to set initial schemas and mods (useful for development)
-const initialUiSchema = {};
 const mods = {};
 
 export default function PlaygroundContainer(props) {
-  console.log('In widget: ' + props.initalvalue);
-  const [schema, setSchema] = React.useState(JSON.stringify(props.initalvalue));
+  const [schema, setSchema] = React.useState(JSON.stringify(props.initialJsonSchema));
   const [uischema, setUischema] = React.useState(
-    JSON.stringify(initialUiSchema),
+    JSON.stringify(props.initialUiSchema),
   );
   const classes = useStyles();
   return (
@@ -41,11 +39,14 @@ export default function PlaygroundContainer(props) {
         mods={mods}
         schemaTitle='Data Schema'
         uischemaTitle='UI Schema'
-        onChange={(newSchema: string, newUiSchema: string) => {
+        onChange={(newSchema, newUiSchema) => {
           setSchema(newSchema);
           setUischema(newUiSchema);
-          console.log('callback called with: ' + JSON.stringify(newSchema));
-          props.onChange(newSchema);
+          const store = JSON.stringify({
+              jsonSchema: JSON.parse(newSchema),
+              uiSchema: JSON.parse(newUiSchema)
+          });
+          props.ui?.document?.field?.setValue(store);
         }}
         width='95%'
         height='800px'

@@ -7,7 +7,8 @@ class App extends Component {
     super(props)
 
     this.ui = props.ui;
-    this.state = { text: '', show:!props.ui,  mode: 'edit', value: {}};
+    // If no ui is provided we show the prop immediately (show = true), after getInitialState otherwise (show = false).
+    this.state = { text: '', show:!props.ui,  mode: 'edit', value: {jsonSchema: {}, uiSchema: {}}};
   }
 
   componentDidMount() {
@@ -20,7 +21,6 @@ class App extends Component {
     try {
       const brDocument = await ui.document.get();
       const value = await ui.document.field.getValue();
-      console.info('Received value ' + value);
       return { mode: brDocument.mode, show: true, value: JSON.parse(value)};
     } catch (error) {
       console.error('Failed to register extension:', error.message);
@@ -29,17 +29,11 @@ class App extends Component {
     return this.state;
   }
   render() {
-    console.log('rendereed with: ' + this.state.value);
     return (this.state.show && <PlaygroundContainer
       title='React JSON Schema Form Builder'
-      initalvalue={this.state.value}
-      onChange={event => {
-        this.setState({ value: event.target.value }, () => {
-          if (this.ui) {
-            this.ui.document.field.setValue(event.target.value);
-          }
-        })
-      }}
+      initialJsonSchema={this.state.value.jsonSchema}
+      initialUiSchema={this.state.value.uiSchema}
+      ui={this.ui}
     />);
   }
 }
