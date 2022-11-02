@@ -13,7 +13,7 @@ import { Theme as Bootstrap4Theme } from '@rjsf/bootstrap-4';
 import {
   FormBuilder,
   PredefinedGallery,
-} from '@ginkgo-bioworks/react-json-schema-form-builder';
+} from 'rid-json';
 import withStyles from 'react-jss';
 import Tabs from './tabs/Tabs';
 import JSONInput from 'react-json-editor-ajrm';
