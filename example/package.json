@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "build": "react-scripts build",
     "test": "react-app-rewired test",
     "prettier": "prettier -w src",
     "prettier:check": "prettier -c src",
@@ -20,6 +20,7 @@
     "@rjsf/core": "^3.0.0",
     "bootstrap": "file:../node_modules/bootstrap",
     "react": "file:../node_modules/react",
+    "react-scripts": "5.0.1",
     "react-bootstrap": "^1.6.4",
     "react-dom": "file:../node_modules/react-dom",
     "react-json-editor-ajrm": "^2.5.13",
