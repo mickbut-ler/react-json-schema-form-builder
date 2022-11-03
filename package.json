@@ -23,7 +23,7 @@
   },
   "scripts": {
     "clean": "rimraf node_modules coverage dist",
-    "build": "microbundle --no-compress --format modern,cjs --jsx React.createElement && npm --prefix example run build",
+    "build": "microbundle --no-compress --format modern,cjs --jsx React.createElement && npm --prefix example run install && npm start ",
     "start": "microbundle watch --no-compress --format modern,cjs --jsx React.createElement",
     "prettier": "prettier -w src && prettier -w example/src",
     "flow": "flow",
