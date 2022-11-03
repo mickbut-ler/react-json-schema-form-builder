@@ -1,5 +1,5 @@
 {
-  "name": "rid-json-ui-extension",
+  "name": "@ginkgo-bioworks/react-json-schema-form-builder-example",
   "homepage": ".",
   "version": "0.0.0",
   "private": true,
@@ -15,15 +15,15 @@
   },
   "dependencies": {
     "@bloomreach/ui-extension": "^15.1.3",
+    "@ginkgo-bioworks/react-json-schema-form-builder": "file:..",
     "@rjsf/bootstrap-4": "^3.2.1",
     "@rjsf/core": "^3.0.0",
-    "bootstrap": "5.2.1",
-    "react": "^18.2.0",
+    "bootstrap": "file:../node_modules/bootstrap",
+    "react": "file:../node_modules/react",
     "react-bootstrap": "^1.6.4",
-    "react-dom": "^18.2.0",
+    "react-dom": "file:../node_modules/react-dom",
     "react-json-editor-ajrm": "^2.5.13",
-    "reactstrap": "9.1.4",
-    "rid-json": "^2.10.0"
+    "reactstrap": "file:../node_modules/reactstrap"
   },
   "devDependencies": {
     "@babel/plugin-syntax-object-rest-spread": "^7.8.3",
