@@ -46,6 +46,11 @@ export default function CardGeneralParameterInputs({
       : defaultLabel;
   };
 
+  const titleTooltip = {
+    display: 'flex',
+    justifyContent: 'space-between',
+  };
+
   const objectNameLabel = fetchLabel('objectNameLabel', 'Object Name');
   const displayNameLabel = fetchLabel('displayNameLabel', 'Display Name');
   const descriptionLabel = fetchLabel('descriptionLabel', 'Description');
@@ -73,7 +78,7 @@ export default function CardGeneralParameterInputs({
       <div className='card-entry-row'>
         {showObjectNameInput && (
           <div className='card-entry'>
-            <h5>
+            <h5 style={titleTooltip}>
               {`${objectNameLabel} `}
               <Tooltip
                 text={
@@ -128,7 +133,7 @@ export default function CardGeneralParameterInputs({
             parameters.$ref === undefined ? '' : 'disabled-input'
           }`}
         >
-          <h5>
+          <h5 style={titleTooltip}>
             {`${displayNameLabel} `}
             <Tooltip
               text={
@@ -160,7 +165,7 @@ export default function CardGeneralParameterInputs({
         <div
           className={`card-entry ${parameters.$ref ? 'disabled-input' : ''}`}
         >
-          <h5>
+          <h5 style={titleTooltip}>
             {`${descriptionLabel} `}
             <Tooltip
               text={
@@ -194,7 +199,7 @@ export default function CardGeneralParameterInputs({
             'wide-card-entry': !showObjectNameInput,
           })}
         >
-          <h5>
+          <h5 style={titleTooltip}>
             {`${inputTypeLabel} `}
             <Tooltip
               text={

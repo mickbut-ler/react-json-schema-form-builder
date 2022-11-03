@@ -22,8 +22,10 @@ import type { Parameters, Mods, FormInput } from './types';
 
 const useStyles = createUseStyles({
   cardEntries: {
+    backgroundColor: '#8FCAE7',
+
     'border-bottom': '1px solid gray',
-    margin: '.5em 1.5em 0 1.5em',
+    padding: '.5em 1.5em 0 1.5em',
     '& h5': {
       color: 'black',
       'font-size': '14px',
@@ -78,7 +80,8 @@ const useStyles = createUseStyles({
     },
   },
   cardInteractions: {
-    margin: '.5em 1.5em',
+    backgroundColor: '#8FCAE7',
+    padding: '.5em 1.5em',
     textAlign: 'left',
     '& .fa': {
       marginRight: '1em',
