@@ -24,8 +24,7 @@
   "scripts": {
     "clean": "rimraf node_modules coverage dist",
     "build": "microbundle --no-compress --format modern,cjs --jsx React.createElement && npm --prefix example install",
-    "start": "npm --prefix example run heroku-postbuild",
-    "heroku-postbuild": "serve -s example/build",
+    "start": "serve -s example/build",
     "prettier": "prettier -w src && prettier -w example/src",
     "flow": "flow",
     "flow:install-types": "flow-typed install",
