@@ -135,7 +135,7 @@ const useStyles = createUseStyles({
   formHead: {
     display: 'block',
     margin: '0 auto',
-    'background-color': 'red',
+    'background-color': '#138AC2',
     border: '1px solid #858F96',
     'border-radius': '4px',
     width: '70%',
