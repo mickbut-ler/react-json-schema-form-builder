@@ -22,6 +22,7 @@
     "node": ">=14"
   },
   "scripts": {
+    "devmode": "microbundle watch --no-compress --format modern,cjs --jsx React.createElement",
     "clean": "rimraf node_modules coverage dist",
     "build": "microbundle --no-compress --format modern,cjs --jsx React.createElement && npm --prefix example install && npm --prefix example run build ",
     "start": "serve -s example/build",
