@@ -168,6 +168,79 @@ class JsonSchemaFormEditor extends React.Component<Props, State> {
                   </ErrorBoundary>
                 </div>
               ),
+            },   {
+              name: 'Preview Form',
+              id: 'preview-form',
+              content: (
+                <div
+                  className='tab-pane'
+                  style={{
+                    height: this.props.height ? this.props.height : '500px',
+                  }}
+                >
+                  <ErrorBoundary
+                    onErr={(err: string) => {
+                      this.setState({
+                        schemaFormErrorFlag: err,
+                      });
+                    }}
+                    errMessage='Error parsing JSON Schema'
+                  >
+                    <Form
+                      schema={
+                        schemaError === '' ? JSON.parse(this.props.schema) : {}
+                      }
+                      uiSchema={
+                        schemaUiError === ''
+                          ? JSON.parse(this.props.uischema)
+                          : {}
+                      }
+                      onChange={(formData) =>
+                        this.updateFormData(JSON.stringify(formData.formData))
+                      }
+                      formData={this.state.formData}
+                      submitButtonMessage={'Submit'}
+                      onSubmit={(submissionData) => {
+                        // below only runs if validation succeeded
+                        this.setState({
+                          validFormInput: true,
+                          outputToggle: true,
+                          submissionData,
+                        });
+                      }}
+                    />
+                  </ErrorBoundary>
+                  <Modal isOpen={this.state.outputToggle}>
+                    <ModalHeader>Form output preview</ModalHeader>
+                    <ModalBody>
+                      <div className='editor-container'>
+                        <ErrorBoundary
+                          onErr={() => {}}
+                          errMessage={'Error parsing JSON Schema Form output'}
+                        >
+                          <h4>Output Data</h4>
+                          <pre className={this.props.classes.codeViewer}>
+                            {JSON.stringify(this.state.submissionData, null, 2)}
+                          </pre>
+                        </ErrorBoundary>
+                        <br />
+                      </div>
+                    </ModalBody>
+                    <ModalFooter>
+                      <Button
+                        onClick={() => {
+                          this.setState({
+                            outputToggle: false,
+                          });
+                        }}
+                        color='secondary'
+                      >
+                        Close
+                      </Button>
+                    </ModalFooter>
+                  </Modal>
+                </div>
+              ),
             },
 
           ]}
