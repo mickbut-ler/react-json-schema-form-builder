@@ -224,7 +224,6 @@ export default function FormBuilder({
   );
   const categoryHash = generateCategoryHash(allFormInputs);
 
-  console.log(colorPalette.colorPalette.colorPrimary);
 
   return (
     <div className={`${classes.formBuilder} ${className || ''}`}>

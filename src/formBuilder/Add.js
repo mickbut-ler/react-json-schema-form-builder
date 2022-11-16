@@ -31,6 +31,14 @@ const useStyles = createUseStyles({
           display: 'flex',
           justifyContent: 'space-between',
           marginTop: '.5em',
+          '& .btn-primary': {
+            // backgroundColor: `${colorPalette.colorQuinary}!important`,
+            backgroundColor: `${colorPalette.colorPalette.colorPrimary}`,
+          },
+          '& .btn-secondary': {
+            // backgroundColor: `${colorPalette.colorQuinary}!important`,
+            backgroundColor: `${colorPalette.colorPalette.colorGray}`,
+          },
         },
       },
     },
@@ -50,7 +58,6 @@ export default function Add({
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [createChoice, setCreateChoice] = useState('card');
   const [elementId] = useState(getRandomId());
-
   return (
     <div style={{ display: hidden ? 'none' : 'initial' }}>
       <span id={`${elementId}_add`}>
