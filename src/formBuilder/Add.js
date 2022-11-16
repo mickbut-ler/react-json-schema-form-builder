@@ -14,6 +14,7 @@ import FontAwesomeIcon from './FontAwesomeIcon';
 import FBRadioGroup from './radio/FBRadioGroup';
 import { getRandomId } from './utils';
 import type { Node } from 'react';
+import colorPalette from '../util/constants';
 
 const useStyles = createUseStyles({
   addDetails: {
@@ -23,7 +24,9 @@ const useStyles = createUseStyles({
       '& .popover-inner': {
         border: '10px solid #000',
         borderRadius: '4px',
-        '& .popover-header': { borderBottom: '1px solid #1d71ad' },
+        '& .popover-header': {
+          borderBottom: `1px solid ${colorPalette.colorPrimary}`,
+        },
         '& .action-buttons': {
           display: 'flex',
           justifyContent: 'space-between',
@@ -88,7 +91,11 @@ export default function Add({
             }}
           />
           <div className='action-buttons'>
-            <Button onClick={() => setPopoverOpen(false)} color='secondary'>
+            <Button
+              onClick={() => setPopoverOpen(false)}
+              cssModule={colorPalette.colorPrimary}
+              color='secondary'
+            >
               Cancel
             </Button>
             <Button

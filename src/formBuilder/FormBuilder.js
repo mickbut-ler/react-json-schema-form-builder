@@ -22,6 +22,7 @@ import {
 import DEFAULT_FORM_INPUTS from './defaults/defaultFormInputs';
 import type { Node } from 'react';
 import type { Mods } from './types';
+import colorPalette from '../util/constants';
 
 const useStyles = createUseStyles({
   formBuilder: {
@@ -90,7 +91,7 @@ const useStyles = createUseStyles({
         width: '100%',
         'text-align': 'left',
         display: 'inline-block',
-        color: '#138AC2',
+        color: colorPalette.colorPalette.colorPrimary,
         margin: '0.25em .5em 0 .5em',
         'font-size': '18px',
       },
@@ -135,7 +136,7 @@ const useStyles = createUseStyles({
   formHead: {
     display: 'block',
     margin: '0 auto',
-    'background-color': '#138AC2',
+    'background-color': colorPalette.colorPalette.colorPrimary,
     border: '1px solid #858F96',
     'border-radius': '4px',
     width: '70%',
@@ -222,6 +223,8 @@ export default function FormBuilder({
     defaultCollapseStates,
   );
   const categoryHash = generateCategoryHash(allFormInputs);
+
+  console.log(colorPalette.colorPalette.colorPrimary);
 
   return (
     <div className={`${classes.formBuilder} ${className || ''}`}>
