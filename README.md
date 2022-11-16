@@ -1,3 +1,5 @@
+# RID docs:
+
 # Installation:
 1. Install & run JSON Form builder
 1.1 Npm install root folder
@@ -10,6 +12,9 @@
 2.4 Go to localhost:3000
 
 Note: Now you can make adjustments in the react-json-schema-form-builder/src/formBuilder. These adjustments are visible on your localhost:3000
+
+# Color palette
+Color palette configuration: src/util/constants.js
 
 
 # React JSON Schema Form Editor
