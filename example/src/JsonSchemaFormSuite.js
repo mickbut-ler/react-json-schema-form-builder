@@ -79,6 +79,8 @@ class JsonSchemaFormEditor extends React.Component<Props, State> {
       editorWidth: 700,
       submissionData: {},
     };
+
+    console.log('props', props);
   }
 
   // update state schema and indicate parsing errors
@@ -168,7 +170,8 @@ class JsonSchemaFormEditor extends React.Component<Props, State> {
                   </ErrorBoundary>
                 </div>
               ),
-            },   {
+            },
+            {
               name: 'Preview Form',
               id: 'preview-form',
               content: (
@@ -242,7 +245,83 @@ class JsonSchemaFormEditor extends React.Component<Props, State> {
                 </div>
               ),
             },
-
+            {
+              name: 'Edit Schema',
+              id: 'editors',
+              content: (
+                <div
+                  className='tab-pane'
+                  style={{
+                    height: this.props.height ? this.props.height : '500px',
+                    display: 'flex',
+                    flexDirection: 'row',
+                  }}
+                >
+                  <div
+                    style={{ margin: '1em', width: '50em' }}
+                    className='editor-container'
+                  >
+                    <ErrorBoundary
+                      onErr={(err: string) => {
+                        // if rendering initial value causes a crash
+                        // eslint-disable-next-line no-console
+                        console.error(err);
+                        this.updateSchema('{}');
+                      }}
+                      errMessage={'Error parsing JSON Schema input'}
+                    >
+                      <h4>Data Schema</h4>
+                      <JSONInput
+                        id='data_schema'
+                        placeholder={
+                          this.props.schema
+                            ? (() => {
+                                try {
+                                  return JSON.parse(this.props.schema);
+                                } catch (e) {
+                                  console.error(e);
+                                  return {};
+                                }
+                              })()
+                            : {}
+                        }
+                        locale={locale}
+                        height='550px'
+                        onChange={(data: any) => this.updateSchema(data.json)}
+                      />
+                    </ErrorBoundary>
+                    <br />
+                  </div>
+                  <div
+                    style={{ margin: '1em', width: '50em' }}
+                    className='editor-container'
+                  >
+                    <ErrorBoundary
+                      onErr={(err: string) => {
+                        // if rendering initial value causes a crash
+                        // eslint-disable-next-line no-console
+                        console.error(err);
+                        this.updateUISchema('{}');
+                      }}
+                      errMessage={'Error parsing JSON UI Schema input'}
+                    >
+                      <h4>UI Schema</h4>
+                      <JSONInput
+                        id='ui_schema'
+                        placeholder={
+                          this.props.uischema
+                            ? JSON.parse(this.props.uischema)
+                            : {}
+                        }
+                        locale={locale}
+                        height='550px'
+                        onChange={(data: any) => this.updateUISchema(data.json)}
+                      />
+                    </ErrorBoundary>
+                  </div>
+                </div>
+              ),
+            },
           ]}
         />
       </div>

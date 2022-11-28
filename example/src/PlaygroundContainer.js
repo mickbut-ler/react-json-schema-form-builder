@@ -4,6 +4,7 @@ import React from 'react';
 
 import JsonSchemaFormSuite from './JsonSchemaFormSuite';
 import { createUseStyles } from 'react-jss';
+import customFormInputs from './custom-input/rangeInput';
 
 const useStyles = createUseStyles({
   header: {
@@ -19,10 +20,12 @@ const useStyles = createUseStyles({
 });
 
 // Can be used to set initial schemas and mods (useful for development)
-const mods = {};
+const mods = { customFormInputs };
 
 export default function PlaygroundContainer(props) {
-  const [schema, setSchema] = React.useState(JSON.stringify(props.initialJsonSchema));
+  const [schema, setSchema] = React.useState(
+    JSON.stringify(props.initialJsonSchema),
+  );
   const [uischema, setUischema] = React.useState(
     JSON.stringify(props.initialUiSchema),
   );
@@ -43,8 +46,8 @@ export default function PlaygroundContainer(props) {
           setSchema(newSchema);
           setUischema(newUiSchema);
           const store = JSON.stringify({
-              jsonSchema: JSON.parse(newSchema),
-              uiSchema: JSON.parse(newUiSchema)
+            jsonSchema: JSON.parse(newSchema),
+            uiSchema: JSON.parse(newUiSchema),
           });
           props.ui?.document?.field?.setValue(store);
         }}
